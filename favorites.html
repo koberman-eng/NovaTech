@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Избранные товары интернет-магазина NovaTech">
+    <title>NovaTech - Избранное</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232563eb'/%3E%3Ctext x='50' y='70' font-size='60' font-weight='bold' fill='white' text-anchor='middle' font-family='Arial, sans-serif'%3ETS%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <div class="logo">
+                    <a href="index.html" class="logo__link">
+                        <img src="https://via.placeholder.com/40x40/2563eb/ffffff?text=NT" alt="NovaTech Logo" class="logo__image" onerror="this.style.display='none'">
+                        <span class="logo__text">NovaTech</span>
+                    </a>
+                </div>
+                <div class="header__search">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" class="search-input" placeholder="Поиск товаров..." autocomplete="off">
+                        <button type="button" id="searchBtn" class="search-btn" aria-label="Поиск">🔍</button>
+                        <div id="searchResults" class="search-results"></div>
+                    </div>
+                </div>
+                <div class="header__actions">
+                    <div class="city-selector" id="citySelector" title="Выбрать город">
+                        <span class="city-icon">📍</span>
+                        <span class="city-name">Москва</span>
+                    </div>
+                    <div class="favorites-icon" onclick="window.location.href='favorites.html'" title="Избранное">
+                        <span class="favorites-badge" style="display: none;">0</span>
+                    </div>
+                    <div class="cart-icon" onclick="window.location.href='order-form.html'" title="Корзина">
+                        <span class="cart-badge" style="display: none;">0</span>
+                    </div>
+                    <div class="account-icon" onclick="window.location.href='account.html'" title="Личный кабинет">
+                    </div>
+                </div>
+                <button class="burger" id="burger" aria-label="Меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar-nav">
+        <nav class="nav nav--sidebar">
+            <ul class="nav__list nav__list--vertical">
+                <li class="nav__item">
+                    <a href="index.html" class="nav__link">
+                        <span class="nav__icon">🏠</span>
+                        <span class="nav__text">Главная</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="gallery.html" class="nav__link">
+                        <span class="nav__icon">📦</span>
+                        <span class="nav__text">Каталог</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="order-form.html" class="nav__link">
+                        <span class="nav__icon">🛒</span>
+                        <span class="nav__text">Корзина</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="favorites.html" class="nav__link nav__link--active">
+                        <span class="nav__icon">⭐</span>
+                        <span class="nav__text">Избранное</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="account.html" class="nav__link">
+                        <span class="nav__icon">👤</span>
+                        <span class="nav__text">Личный кабинет</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper">
+    <!-- Favorites Section -->
+    <section class="favorites-section">
+        <div class="container">
+            <h1 class="section__title">Избранное</h1>
+            
+            <div id="favoritesContent" class="favorites-content">
+                <!-- Товары будут загружены динамически -->
+            </div>
+        </div>
+    </section>
+    </div>
+    <!-- End Main Content Wrapper -->
+
+    <!-- City Modal -->
+    <div class="modal" id="cityModal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+            <button class="modal__close" id="cityModalClose">&times;</button>
+            <h2 class="modal__title">Выберите город</h2>
+            <div class="city-list" id="cityList">
+                <!-- Список городов будет загружен динамически -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3 class="footer__title">О нас</h3>
+                    <p class="footer__text">NovaTech - ведущий интернет-магазин электроники и техники в России.</p>
+                </div>
+                <div class="footer__section">
+                    <h3 class="footer__title">Контакты</h3>
+                    <p class="footer__text">Email: info@novatech.ru</p>
+                    <p class="footer__text">Телефон: +7 (800) 123-45-67</p>
+                </div>
+                <div class="footer__section">
+                    <h3 class="footer__title">Навигация</h3>
+                    <ul class="footer__nav">
+                        <li><a href="index.html" class="footer__link">Главная</a></li>
+                        <li><a href="gallery.html" class="footer__link">Каталог</a></li>
+                        <li><a href="order-form.html" class="footer__link">Корзина</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2024 NovaTech. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/favorites.js"></script>
+    <script src="js/account.js"></script>
+    <script src="js/city.js"></script>
+    <script>
+        // Загрузка избранного
+        document.addEventListener('DOMContentLoaded', function() {
+            const favoritesContent = document.getElementById('favoritesContent');
+            
+            function renderFavorites() {
+                const favoritesItems = favorites.getItems();
+                
+                if (favoritesItems.length === 0) {
+                    favoritesContent.innerHTML = `
+                        <div class="favorites-empty">
+                            <div class="favorites-empty__icon">⭐</div>
+                            <h2>Избранное пусто</h2>
+                            <p>Добавьте товары в избранное, чтобы вернуться к ним позже</p>
+                            <a href="gallery.html" class="btn btn--primary" style="margin-top: 20px;">Перейти в каталог</a>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                favoritesContent.innerHTML = '<div class="products__grid"></div>';
+                const productsGrid = favoritesContent.querySelector('.products__grid');
+                
+                favoritesItems.forEach(item => {
+                    const product = getProductById(item.id);
+                    if (!product) return;
+                    
+                    const productCard = document.createElement('article');
+                    productCard.className = 'product-card';
+                    productCard.innerHTML = `
+                        <div class="product-card__image">
+                            <img src="${item.image}" alt="${item.name}" loading="lazy" 
+                                 onerror="this.src='https://via.placeholder.com/300x300?text=${encodeURIComponent(item.name)}'">
+                            ${product.discount > 0 ? `<span class="product-card__discount">-${product.discount}%</span>` : ''}
+                            <button class="favorite-btn active" data-product-id="${item.id}" title="Удалить из избранного">⭐</button>
+                        </div>
+                        <div class="product-card__content">
+                            <h3 class="product-card__title">${item.name}</h3>
+                            <p class="product-card__description">${product.description}</p>
+                            <div class="product-card__footer">
+                                <div class="product-card__price-wrapper">
+                                    <span class="product-card__price">${item.price.toLocaleString('ru-RU')} ₽</span>
+                                    ${product.oldPrice ? `<span class="product-card__price-old">${product.oldPrice.toLocaleString('ru-RU')} ₽</span>` : ''}
+                                </div>
+                                <div class="product-card__actions">
+                                    <a href="product.html?id=${item.id}" class="btn btn--secondary">Подробнее</a>
+                                    <button class="btn btn--primary add-to-cart-btn" data-product-id="${item.id}">В корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    productsGrid.appendChild(productCard);
+                });
+                
+                // Обработчики кнопок
+                document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const productId = parseInt(this.getAttribute('data-product-id'));
+                        cart.addItem(productId, 1);
+                    });
+                });
+                
+                document.querySelectorAll('.favorite-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const productId = parseInt(this.getAttribute('data-product-id'));
+                        favorites.removeItem(productId);
+                        renderFavorites();
+                    });
+                });
+            }
+            
+            renderFavorites();
+            
+            // Инициализация выбора города теперь происходит автоматически в city.js
+        });
+    </script>
+</body>
+</html>
+

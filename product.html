@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Страница товара интернет-магазина NovaTech">
+    <title>NovaTech - Страница товара</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232563eb'/%3E%3Ctext x='50' y='70' font-size='60' font-weight='bold' fill='white' text-anchor='middle' font-family='Arial, sans-serif'%3ETS%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <div class="logo">
+                    <a href="index.html" class="logo__link">
+                        <img src="https://via.placeholder.com/40x40/2563eb/ffffff?text=NT" alt="NovaTech Logo" class="logo__image" onerror="this.style.display='none'">
+                        <span class="logo__text">NovaTech</span>
+                    </a>
+                </div>
+                <div class="header__search">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" class="search-input" placeholder="Поиск товаров..." autocomplete="off">
+                        <button type="button" id="searchBtn" class="search-btn" aria-label="Поиск">🔍</button>
+                        <div id="searchResults" class="search-results"></div>
+                    </div>
+                </div>
+                <div class="header__actions">
+                    <div class="city-selector" id="citySelector" title="Выбрать город">
+                        <span class="city-icon">📍</span>
+                        <span class="city-name">Москва</span>
+                    </div>
+                    <div class="favorites-icon" onclick="window.location.href='favorites.html'" title="Избранное">
+                        <span class="favorites-badge" style="display: none;">0</span>
+                    </div>
+                    <div class="cart-icon" onclick="window.location.href='order-form.html'" title="Корзина">
+                        <span class="cart-badge" style="display: none;">0</span>
+                    </div>
+                    <div class="account-icon" onclick="window.location.href='account.html'" title="Личный кабинет">
+                    </div>
+                </div>
+                <button class="burger" id="burger" aria-label="Меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar-nav">
+        <nav class="nav nav--sidebar">
+            <ul class="nav__list nav__list--vertical">
+                <li class="nav__item">
+                    <a href="index.html" class="nav__link">
+                        <span class="nav__icon">🏠</span>
+                        <span class="nav__text">Главная</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="gallery.html" class="nav__link">
+                        <span class="nav__icon">📦</span>
+                        <span class="nav__text">Каталог</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="order-form.html" class="nav__link">
+                        <span class="nav__icon">🛒</span>
+                        <span class="nav__text">Корзина</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="favorites.html" class="nav__link">
+                        <span class="nav__icon">⭐</span>
+                        <span class="nav__text">Избранное</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="account.html" class="nav__link">
+                        <span class="nav__icon">👤</span>
+                        <span class="nav__text">Личный кабинет</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper">
+    <!-- Product Section -->
+    <section class="product-detail">
+        <div class="container">
+            <div class="product-detail__content">
+                <div class="product-detail__images">
+                    <div class="product-detail__main-image-wrapper">
+                        <button class="image-nav-btn image-nav-btn--prev" id="prevImageBtn" aria-label="Предыдущее изображение">‹</button>
+                        <div class="product-detail__main-image" id="zoomContainer">
+                            <img src="https://via.placeholder.com/600x600?text=Смартфон+Pro+Max" alt="Смартфон Pro Max" id="mainImage">
+                        </div>
+                        <button class="image-nav-btn image-nav-btn--next" id="nextImageBtn" aria-label="Следующее изображение">›</button>
+                    </div>
+                    <div class="product-detail__thumbnails-wrapper">
+                        <div class="product-detail__thumbnails" id="thumbnailsContainer">
+                            <!-- Миниатюры будут загружены динамически -->
+                        </div>
+                    </div>
+                </div>
+                <div class="product-detail__info">
+                    <h1 class="product-detail__title">Смартфон Pro Max</h1>
+                    <div class="product-detail__rating">
+                        <span class="rating__stars">★★★★★</span>
+                        <span class="rating__count">(127 отзывов)</span>
+                    </div>
+                    <div class="product-detail__price">
+                        <span class="price__current">29 990 ₽</span>
+                        <span class="price__old">34 990 ₽</span>
+                    </div>
+                    <div class="product-detail__description">
+                        <h3>Описание</h3>
+                        <p>Мощный смартфон с отличной камерой, большим дисплеем и длительным временем работы батареи. Идеально подходит для работы и развлечений.</p>
+                        <ul>
+                            <li>Экран: 6.7" Super Retina XDR</li>
+                            <li>Процессор: A17 Pro</li>
+                            <li>Камера: 48 Мп основная, 12 Мп фронтальная</li>
+                            <li>Память: 128 ГБ</li>
+                            <li>Батарея: до 29 часов видео</li>
+                        </ul>
+                    </div>
+                    <div class="product-detail__quantity">
+                        <label for="quantity">Количество:</label>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" id="decreaseBtn">-</button>
+                            <input type="number" id="quantity" value="1" min="1" max="10">
+                            <button class="quantity-btn" id="increaseBtn">+</button>
+                        </div>
+                    </div>
+                    <div class="product-detail__actions">
+                        <div class="product-detail__actions-main">
+                            <button class="btn btn--primary btn--large" id="addToCartBtn">Добавить в корзину</button>
+                        </div>
+                        <div class="product-detail__actions-secondary">
+                            <button class="btn btn--outline btn--large favorite-btn-product" id="addToFavoritesBtn" title="Добавить в избранное">⭐ В избранное</button>
+                        </div>
+                    </div>
+                    <div class="product-detail__features">
+                        <div class="feature">
+                            <span class="feature__icon">🚚</span>
+                            <span>Бесплатная доставка</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature__icon">🔄</span>
+                            <span>Возврат в течение 14 дней</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature__icon">🛡️</span>
+                            <span>Гарантия 12 месяцев</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Reviews Section -->
+            <div class="product-reviews" id="reviewsSection">
+                <h2 class="section__title">Отзывы</h2>
+                <div class="reviews-summary">
+                    <div class="reviews-rating">
+                        <span class="reviews-rating__value" id="reviewsRatingValue">0</span>
+                        <div class="reviews-rating__stars" id="reviewsRatingStars"></div>
+                        <span class="reviews-rating__count" id="reviewsRatingCount">0 отзывов</span>
+                    </div>
+                </div>
+                <div class="reviews-list" id="reviewsList">
+                    <!-- Отзывы будут загружены динамически -->
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+    <!-- End Main Content Wrapper -->
+
+    <!-- City Modal -->
+    <div class="modal" id="cityModal" style="display: none;">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+            <button class="modal__close" id="cityModalClose">&times;</button>
+            <h2 class="modal__title">Выберите город</h2>
+            <div class="city-list" id="cityList"></div>
+        </div>
+    </div>
+
+    <!-- Zoom Modal -->
+    <div class="zoom-modal" id="zoomModal">
+        <button class="zoom-modal__close" id="zoomModalClose">&times;</button>
+        <div class="zoom-modal__content">
+            <img src="" alt="" id="zoomModalImage">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3 class="footer__title">О нас</h3>
+                    <p class="footer__text">NovaTech - ведущий интернет-магазин электроники и техники в России.</p>
+                </div>
+                <div class="footer__section">
+                    <h3 class="footer__title">Контакты</h3>
+                    <p class="footer__text">Email: info@novatech.ru</p>
+                    <p class="footer__text">Телефон: +7 (800) 123-45-67</p>
+                </div>
+                <div class="footer__section">
+                    <h3 class="footer__title">Навигация</h3>
+                    <ul class="footer__nav">
+                        <li><a href="index.html" class="footer__link">Главная</a></li>
+                        <li><a href="gallery.html" class="footer__link">Каталог</a></li>
+                        <li><a href="order-form.html" class="footer__link">Заказать</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2024 NovaTech. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/favorites.js"></script>
+    <script src="js/account.js"></script>
+    <script src="js/city.js"></script>
+    <script src="js/product.js"></script>
+    <script>
+        // Загрузка товара по ID из URL
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = parseInt(urlParams.get('id'));
+            
+            if (!productId) {
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            const product = getProductById(productId);
+            if (!product) {
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            // Заполнение данных товара
+            const mainImage = document.getElementById('mainImage');
+            const title = document.querySelector('.product-detail__title');
+            const priceCurrent = document.querySelector('.price__current');
+            const priceOld = document.querySelector('.price__old');
+            const description = document.querySelector('.product-detail__description p');
+            const characteristicsList = document.querySelector('.product-detail__description ul');
+            const ratingStars = document.querySelector('.rating__stars');
+            const ratingCount = document.querySelector('.rating__count');
+            const thumbnails = document.querySelector('.product-detail__thumbnails');
+            
+            if (mainImage) {
+                mainImage.src = product.image;
+                mainImage.alt = product.name;
+                mainImage.onerror = function() {
+                    this.src = 'https://via.placeholder.com/600x600?text=' + encodeURIComponent(product.name);
+                };
+            }
+            
+            if (title) title.textContent = product.name;
+            if (priceCurrent) priceCurrent.textContent = product.price.toLocaleString('ru-RU') + ' ₽';
+            if (priceOld) {
+                if (product.oldPrice) {
+                    priceOld.textContent = product.oldPrice.toLocaleString('ru-RU') + ' ₽';
+                    priceOld.style.display = 'inline';
+                } else {
+                    priceOld.style.display = 'none';
+                }
+            }
+            
+            if (description) description.textContent = product.description;
+            
+            if (characteristicsList) {
+                characteristicsList.innerHTML = '';
+                Object.entries(product.characteristics).forEach(([key, value]) => {
+                    const li = document.createElement('li');
+                    li.textContent = `${key}: ${value}`;
+                    characteristicsList.appendChild(li);
+                });
+            }
+            
+            if (ratingStars) {
+                const fullStars = Math.floor(product.rating);
+                const hasHalfStar = product.rating % 1 >= 0.5;
+                ratingStars.textContent = '★'.repeat(fullStars) + (hasHalfStar ? '½' : '') + '☆'.repeat(5 - fullStars - (hasHalfStar ? 1 : 0));
+            }
+            
+            if (ratingCount) {
+                ratingCount.textContent = `(${product.reviewsCount} ${product.reviewsCount === 1 ? 'отзыв' : product.reviewsCount < 5 ? 'отзыва' : 'отзывов'})`;
+            }
+            
+            // Обновление миниатюр
+            const thumbnailsContainer = document.getElementById('thumbnailsContainer');
+            let currentImageIndex = 0;
+            if (thumbnailsContainer && product.images && product.images.length > 0) {
+                thumbnailsContainer.innerHTML = '';
+                product.images.forEach((img, index) => {
+                    const thumbnail = document.createElement('img');
+                    thumbnail.src = img;
+                    thumbnail.alt = `${product.name} - вид ${index + 1}`;
+                    thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+                    thumbnail.setAttribute('data-image', img);
+                    thumbnail.setAttribute('data-index', index);
+                    thumbnail.onerror = function() {
+                        this.src = 'https://via.placeholder.com/150x150?text=' + encodeURIComponent(product.name);
+                    };
+                    thumbnail.addEventListener('click', function() {
+                        currentImageIndex = index;
+                        updateMainImage(img, index);
+                    });
+                    thumbnailsContainer.appendChild(thumbnail);
+                });
+            }
+            
+            // Функция обновления основного изображения
+            function updateMainImage(imageSrc, index) {
+                if (mainImage) {
+                    mainImage.src = imageSrc;
+                    mainImage.alt = `${product.name} - вид ${index + 1}`;
+                }
+                
+                // Обновление активной миниатюры
+                if (thumbnailsContainer) {
+                    thumbnailsContainer.querySelectorAll('.thumbnail').forEach((thumb, idx) => {
+                        thumb.classList.toggle('active', idx === index);
+                    });
+                }
+            }
+            
+            // Навигация по изображениям стрелками
+            const prevImageBtn = document.getElementById('prevImageBtn');
+            const nextImageBtn = document.getElementById('nextImageBtn');
+            
+            if (prevImageBtn && product.images && product.images.length > 1) {
+                prevImageBtn.style.display = 'flex';
+                prevImageBtn.addEventListener('click', function() {
+                    currentImageIndex = (currentImageIndex - 1 + product.images.length) % product.images.length;
+                    updateMainImage(product.images[currentImageIndex], currentImageIndex);
+                });
+            } else if (prevImageBtn) {
+                prevImageBtn.style.display = 'none';
+            }
+            
+            if (nextImageBtn && product.images && product.images.length > 1) {
+                nextImageBtn.style.display = 'flex';
+                nextImageBtn.addEventListener('click', function() {
+                    currentImageIndex = (currentImageIndex + 1) % product.images.length;
+                    updateMainImage(product.images[currentImageIndex], currentImageIndex);
+                });
+            } else if (nextImageBtn) {
+                nextImageBtn.style.display = 'none';
+            }
+            
+            // Навигация клавиатурой
+            document.addEventListener('keydown', function(e) {
+                if (product.images && product.images.length > 1) {
+                    if (e.key === 'ArrowLeft') {
+                        currentImageIndex = (currentImageIndex - 1 + product.images.length) % product.images.length;
+                        updateMainImage(product.images[currentImageIndex], currentImageIndex);
+                    } else if (e.key === 'ArrowRight') {
+                        currentImageIndex = (currentImageIndex + 1) % product.images.length;
+                        updateMainImage(product.images[currentImageIndex], currentImageIndex);
+                    }
+                }
+            });
+            
+            // Загрузка отзывов
+            setTimeout(() => {
+                const reviewsSection = document.getElementById('reviewsSection');
+                const reviewsList = document.getElementById('reviewsList');
+                const reviewsRatingValue = document.getElementById('reviewsRatingValue');
+                const reviewsRatingStars = document.getElementById('reviewsRatingStars');
+                const reviewsRatingCount = document.getElementById('reviewsRatingCount');
+                
+                if (product.reviews && product.reviews.length > 0) {
+                    if (reviewsSection) reviewsSection.style.display = 'block';
+                    
+                    if (reviewsRatingValue) {
+                        reviewsRatingValue.textContent = product.rating.toFixed(1);
+                    }
+                    
+                    if (reviewsRatingStars) {
+                        const fullStars = Math.floor(product.rating);
+                        const hasHalfStar = product.rating % 1 >= 0.5;
+                        reviewsRatingStars.innerHTML = 
+                            '★'.repeat(fullStars) + 
+                            (hasHalfStar ? '½' : '') + 
+                            '☆'.repeat(5 - fullStars - (hasHalfStar ? 1 : 0));
+                    }
+                    
+                    if (reviewsRatingCount) {
+                        const count = product.reviewsCount;
+                        reviewsRatingCount.textContent = `${count} ${count === 1 ? 'отзыв' : count < 5 ? 'отзыва' : 'отзывов'}`;
+                    }
+                    
+                    if (reviewsList) {
+                        reviewsList.innerHTML = '';
+                        product.reviews.forEach(review => {
+                            const reviewItem = document.createElement('div');
+                            reviewItem.className = 'review-item';
+                            reviewItem.innerHTML = `
+                                <div class="review-item__header">
+                                    <div class="review-item__author">${review.author}</div>
+                                    <div class="review-item__date">${review.date}</div>
+                                </div>
+                                <div class="review-item__rating">
+                                    ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
+                                </div>
+                                <div class="review-item__text">${review.text}</div>
+                            `;
+                            reviewsList.appendChild(reviewItem);
+                        });
+                    }
+                } else {
+                    if (reviewsSection) reviewsSection.style.display = 'none';
+                }
+            }, 100);
+            
+            // Обработчик кнопки "Добавить в корзину"
+            const addToCartBtn = document.getElementById('addToCartBtn');
+            if (addToCartBtn) {
+                addToCartBtn.addEventListener('click', function() {
+                    const quantity = parseInt(document.getElementById('quantity').value) || 1;
+                    cart.addItem(productId, quantity);
+                });
+            }
+            
+            // Обработчик кнопки избранного
+            const addToFavoritesBtn = document.getElementById('addToFavoritesBtn');
+            if (addToFavoritesBtn && typeof favorites !== 'undefined') {
+                if (favorites.hasItem(productId)) {
+                    addToFavoritesBtn.classList.add('active');
+                    addToFavoritesBtn.textContent = '⭐ В избранном';
+                    addToFavoritesBtn.setAttribute('title', 'Удалить из избранного');
+                }
+                
+                addToFavoritesBtn.addEventListener('click', function() {
+                    const isActive = favorites.toggleItem(productId);
+                    if (isActive) {
+                        this.classList.add('active');
+                        this.textContent = '⭐ В избранном';
+                        this.setAttribute('title', 'Удалить из избранного');
+                    } else {
+                        this.classList.remove('active');
+                        this.textContent = '⭐ В избранное';
+                        this.setAttribute('title', 'Добавить в избранное');
+                    }
+                });
+            }
+            
+            // Инициализация выбора города теперь происходит автоматически в city.js
+        });
+    </script>
+</body>
+</html>
+

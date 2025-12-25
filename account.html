@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Личный кабинет интернет-магазина NovaTech">
+    <title>NovaTech - Личный кабинет</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%232563eb'/%3E%3Ctext x='50' y='70' font-size='60' font-weight='bold' fill='white' text-anchor='middle' font-family='Arial, sans-serif'%3ETS%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <div class="logo">
+                    <a href="index.html" class="logo__link">
+                        <img src="https://via.placeholder.com/40x40/2563eb/ffffff?text=NT" alt="NovaTech Logo" class="logo__image" onerror="this.style.display='none'">
+                        <span class="logo__text">NovaTech</span>
+                    </a>
+                </div>
+                <div class="header__search">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" class="search-input" placeholder="Поиск товаров..." autocomplete="off">
+                        <button type="button" id="searchBtn" class="search-btn" aria-label="Поиск">🔍</button>
+                        <div id="searchResults" class="search-results"></div>
+                    </div>
+                </div>
+                <div class="header__actions">
+                    <div class="city-selector" id="citySelector" title="Выбрать город">
+                        <span class="city-icon">📍</span>
+                        <span class="city-name">Москва</span>
+                    </div>
+                    <div class="favorites-icon" onclick="window.location.href='favorites.html'" title="Избранное">
+                        <span class="favorites-badge" style="display: none;">0</span>
+                    </div>
+                    <div class="cart-icon" onclick="window.location.href='order-form.html'" title="Корзина">
+                        <span class="cart-badge" style="display: none;">0</span>
+                    </div>
+                    <div class="account-icon" onclick="window.location.href='account.html'" title="Личный кабинет">
+                    </div>
+                </div>
+                <button class="burger" id="burger" aria-label="Меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar-nav">
+        <nav class="nav nav--sidebar">
+            <ul class="nav__list nav__list--vertical">
+                <li class="nav__item">
+                    <a href="index.html" class="nav__link">
+                        <span class="nav__icon">🏠</span>
+                        <span class="nav__text">Главная</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="gallery.html" class="nav__link">
+                        <span class="nav__icon">📦</span>
+                        <span class="nav__text">Каталог</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="order-form.html" class="nav__link">
+                        <span class="nav__icon">🛒</span>
+                        <span class="nav__text">Корзина</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="favorites.html" class="nav__link">
+                        <span class="nav__icon">⭐</span>
+                        <span class="nav__text">Избранное</span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="account.html" class="nav__link nav__link--active">
+                        <span class="nav__icon">👤</span>
+                        <span class="nav__text">Личный кабинет</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-wrapper">
+    <!-- Account Section -->
+    <section class="account-section">
+        <div class="container">
+            <h1 class="section__title">Личный кабинет</h1>
+            
+            <div id="loginForm" class="account-login" style="display: none;">
+                <div class="account-card">
+                    <h2>Вход в личный кабинет</h2>
+                    <form id="loginFormElement">
+                        <div class="form-group">
+                            <label for="loginEmail" class="form-label">Email <span class="required">*</span></label>
+                            <input type="email" id="loginEmail" name="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword" class="form-label">Пароль <span class="required">*</span></label>
+                            <input type="password" id="loginPassword" name="password" class="form-input" required>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--large">Войти</button>
+                    </form>
+                    <p class="account-switch">Нет аккаунта? <a href="#" id="showRegister">Зарегистрироваться</a></p>
+                </div>
+            </div>
+
+            <div id="registerForm" class="account-register" style="display: none;">
+                <div class="account-card">
+                    <h2>Регистрация</h2>
+                    <form id="registerFormElement">
+                        <div class="form-group">
+                            <label for="regName" class="form-label">Имя <span class="required">*</span></label>
+                            <input type="text" id="regName" name="name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regEmail" class="form-label">Email <span class="required">*</span></label>
+                            <input type="email" id="regEmail" name="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regPhone" class="form-label">Телефон</label>
+                            <input type="tel" id="regPhone" name="phone" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="regPassword" class="form-label">Пароль <span class="required">*</span></label>
+                            <input type="password" id="regPassword" name="password" class="form-input" required minlength="8">
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--large">Зарегистрироваться</button>
+                    </form>
+                    <p class="account-switch">Уже есть аккаунт? <a href="#" id="showLogin">Войти</a></p>
+                </div>
+            </div>
+
+            <div id="accountContent" class="account-content" style="display: none;">
+                <div class="account-layout">
+                    <div class="account-tabs account-tabs--vertical">
+                        <button class="account-tab active" data-tab="profile">👤 Профиль</button>
+                        <button class="account-tab" data-tab="orders">📦 Заказы</button>
+                        <button class="account-tab" data-tab="favorites">⭐ Избранное</button>
+                        <button class="account-tab" data-tab="settings">⚙️ Настройки</button>
+                    </div>
+
+                    <div class="account-tabs-content">
+                        <div class="account-tab-content active" id="tabProfile">
+                    <div class="account-card">
+                        <h2>Личные данные</h2>
+                        <form id="profileForm">
+                            <div class="form-group">
+                                <label for="profileName" class="form-label">Имя</label>
+                                <input type="text" id="profileName" name="name" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="profileEmail" class="form-label">Email</label>
+                                <input type="email" id="profileEmail" name="email" class="form-input" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="profilePhone" class="form-label">Телефон</label>
+                                <input type="tel" id="profilePhone" name="phone" class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="profileAddress" class="form-label">Адрес</label>
+                                <textarea id="profileAddress" name="address" class="form-textarea" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn--primary">Сохранить изменения</button>
+                        </form>
+                    </div>
+                        </div>
+
+                        <div class="account-tab-content" id="tabOrders">
+                            <div class="account-card">
+                                <h2>История заказов</h2>
+                                <div id="ordersList" class="orders-list">
+                                    <!-- Заказы будут загружены динамически -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="account-tab-content" id="tabFavorites">
+                            <div class="account-card">
+                                <h2>Избранное</h2>
+                                <div id="favoritesList" class="favorites-list">
+                                    <!-- Избранное будет загружено динамически -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="account-tab-content" id="tabSettings">
+                            <div class="account-card">
+                                <h2>Настройки</h2>
+                                <button class="btn btn--outline" id="logoutBtn">Выйти из аккаунта</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+    <!-- End Main Content Wrapper -->
+
+    <!-- City Modal -->
+    <div class="modal" id="cityModal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+            <button class="modal__close" id="cityModalClose">&times;</button>
+            <h2 class="modal__title">Выберите город</h2>
+            <div class="city-list" id="cityList">
+                <!-- Список городов будет загружен динамически -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3 class="footer__title">О нас</h3>
+                    <p class="footer__text">NovaTech - ведущий интернет-магазин электроники и техники в России.</p>
+                </div>
+                <div class="footer__section">
+                    <h3 class="footer__title">Контакты</h3>
+                    <p class="footer__text">Email: info@novatech.ru</p>
+                    <p class="footer__text">Телефон: +7 (800) 123-45-67</p>
+                </div>
+                <div class="footer__section">
+                    <h3 class="footer__title">Навигация</h3>
+                    <ul class="footer__nav">
+                        <li><a href="index.html" class="footer__link">Главная</a></li>
+                        <li><a href="gallery.html" class="footer__link">Каталог</a></li>
+                        <li><a href="order-form.html" class="footer__link">Корзина</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2024 NovaTech. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/favorites.js"></script>
+    <script src="js/account.js"></script>
+    <script src="js/city.js"></script>
+    <script>
+        // Инициализация выбора города теперь происходит автоматически в city.js
+    </script>
+    <script>
+        // Инициализация страницы личного кабинета
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const accountContent = document.getElementById('accountContent');
+            const showLogin = document.getElementById('showLogin');
+            const showRegister = document.getElementById('showRegister');
+            const loginFormElement = document.getElementById('loginFormElement');
+            const registerFormElement = document.getElementById('registerFormElement');
+            const profileForm = document.getElementById('profileForm');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const accountTabs = document.querySelectorAll('.account-tab');
+            const tabContents = document.querySelectorAll('.account-tab-content');
+
+            // Проверка авторизации
+            if (account.isLoggedIn()) {
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'none';
+                accountContent.style.display = 'block';
+                loadAccountData();
+            } else {
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+                accountContent.style.display = 'none';
+            }
+
+            // Переключение между входом и регистрацией
+            if (showLogin) {
+                showLogin.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loginForm.style.display = 'block';
+                    registerForm.style.display = 'none';
+                });
+            }
+
+            if (showRegister) {
+                showRegister.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loginForm.style.display = 'none';
+                    registerForm.style.display = 'block';
+                });
+            }
+
+            // Вход
+            if (loginFormElement) {
+                loginFormElement.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = document.getElementById('loginEmail').value;
+                    const password = document.getElementById('loginPassword').value;
+                    
+                    if (account.login(email, password)) {
+                        loginForm.style.display = 'none';
+                        accountContent.style.display = 'block';
+                        loadAccountData();
+                        alert('Добро пожаловать!');
+                    }
+                });
+            }
+
+            // Регистрация
+            if (registerFormElement) {
+                registerFormElement.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = document.getElementById('regEmail').value;
+                    const password = document.getElementById('regPassword').value;
+                    
+                    // Проверка, не зарегистрирован ли уже пользователь с таким email
+                    const existingUser = account.loadUser();
+                    if (existingUser && existingUser.email === email) {
+                        alert('Пользователь с таким email уже зарегистрирован. Войдите в систему.');
+                        registerForm.style.display = 'none';
+                        loginForm.style.display = 'block';
+                        return;
+                    }
+                    
+                    const userData = {
+                        name: document.getElementById('regName').value,
+                        email: email,
+                        password: password,
+                        phone: document.getElementById('regPhone').value || '',
+                        address: '',
+                        orders: [],
+                        registrationDate: new Date().toISOString()
+                    };
+                    
+                    account.saveUser(userData);
+                    alert('Регистрация успешна! Добро пожаловать, ' + userData.name + '!');
+                    registerForm.style.display = 'none';
+                    accountContent.style.display = 'block';
+                    loadAccountData();
+                });
+            }
+
+            // Сохранение профиля
+            if (profileForm) {
+                profileForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const userData = {
+                        name: document.getElementById('profileName').value,
+                        phone: document.getElementById('profilePhone').value,
+                        address: document.getElementById('profileAddress').value
+                    };
+                    
+                    if (account.updateUser(userData)) {
+                        alert('Данные сохранены');
+                    }
+                });
+            }
+
+            // Выход
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function() {
+                    if (confirm('Вы уверены, что хотите выйти?')) {
+                        account.logout();
+                        window.location.reload();
+                    }
+                });
+            }
+
+            // Переключение вкладок
+            accountTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+                    
+                    accountTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === 'tab' + targetTab.charAt(0).toUpperCase() + targetTab.slice(1)) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+
+            // Загрузка данных аккаунта
+            function loadAccountData() {
+                const user = account.getUser();
+                if (!user) return;
+
+                // Заполнение профиля
+                if (document.getElementById('profileName')) {
+                    document.getElementById('profileName').value = user.name || '';
+                }
+                if (document.getElementById('profileEmail')) {
+                    document.getElementById('profileEmail').value = user.email || '';
+                }
+                if (document.getElementById('profilePhone')) {
+                    document.getElementById('profilePhone').value = user.phone || '';
+                }
+                if (document.getElementById('profileAddress')) {
+                    document.getElementById('profileAddress').value = user.address || '';
+                }
+
+                // Загрузка заказов
+                loadOrders();
+                
+                // Загрузка избранного
+                loadFavorites();
+            }
+
+            // Загрузка заказов
+            function loadOrders() {
+                const ordersList = document.getElementById('ordersList');
+                const user = account.getUser();
+                
+                if (!ordersList || !user || !user.orders) return;
+
+                if (user.orders.length === 0) {
+                    ordersList.innerHTML = '<p style="text-align: center; color: var(--color-text-secondary);">У вас пока нет заказов</p>';
+                    return;
+                }
+
+                ordersList.innerHTML = '';
+                user.orders.forEach(order => {
+                    const orderItem = document.createElement('div');
+                    orderItem.className = 'order-item';
+                    const orderDate = new Date(order.date).toLocaleDateString('ru-RU');
+                    orderItem.innerHTML = `
+                        <div class="order-item__header">
+                            <div class="order-item__id">Заказ #${order.id}</div>
+                            <div class="order-item__date">${orderDate}</div>
+                        </div>
+                        <div class="order-item__status">Статус: ${order.status}</div>
+                        <div class="order-item__total">Сумма: ${order.total ? order.total.toLocaleString('ru-RU') + ' ₽' : 'Не указана'}</div>
+                    `;
+                    ordersList.appendChild(orderItem);
+                });
+            }
+
+            // Загрузка избранного
+            function loadFavorites() {
+                const favoritesList = document.getElementById('favoritesList');
+                if (!favoritesList) return;
+
+                const favoritesItems = favorites.getItems();
+                
+                if (favoritesItems.length === 0) {
+                    favoritesList.innerHTML = '<p style="text-align: center; color: var(--color-text-secondary);">У вас пока нет избранных товаров</p>';
+                    return;
+                }
+
+                favoritesList.innerHTML = '';
+                favoritesItems.forEach(item => {
+                    const favoriteItem = document.createElement('div');
+                    favoriteItem.className = 'favorite-item';
+                    favoriteItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="favorite-item__image" 
+                             onerror="this.src='https://via.placeholder.com/100x100?text=${encodeURIComponent(item.name)}'">
+                        <div class="favorite-item__info">
+                            <h3 class="favorite-item__name">${item.name}</h3>
+                            <div class="favorite-item__price">${item.price.toLocaleString('ru-RU')} ₽</div>
+                        </div>
+                        <div class="favorite-item__actions">
+                            <a href="product.html?id=${item.id}" class="btn btn--secondary">Подробнее</a>
+                            <button class="btn btn--primary add-to-cart-btn" data-product-id="${item.id}">В корзину</button>
+                            <button class="btn btn--outline remove-favorite-btn" data-product-id="${item.id}">Удалить</button>
+                        </div>
+                    `;
+                    favoritesList.appendChild(favoriteItem);
+                });
+
+                // Обработчики кнопок
+                document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const productId = parseInt(this.getAttribute('data-product-id'));
+                        cart.addItem(productId, 1);
+                    });
+                });
+
+                document.querySelectorAll('.remove-favorite-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const productId = parseInt(this.getAttribute('data-product-id'));
+                        favorites.removeItem(productId);
+                        loadFavorites();
+                    });
+                });
+            }
+
+            // Инициализация
+            if (account.isLoggedIn()) {
+                loadAccountData();
+            }
+        });
+    </script>
+</body>
+</html>
+
